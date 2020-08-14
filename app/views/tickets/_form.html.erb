@@ -1,0 +1,20 @@
+<div>
+  <%= form_for @ticket do |f|%>
+    <div>
+      <%= f.label :project %>
+      <%= f.collection_select :project_id, Project.all, :id, :name, id: :ticket_project_id %>
+    </div>
+    <div>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    <div>
+    <div>
+      <%= f.label :body %>
+      <%= f.text_area :body %>
+    </div>
+    <div>
+      <%= f.submit(@ticket.new_record? ? 'Create Ticket' : 'Update Ticket') %>
+      <%= link_to 'Back', tickets_path %>
+    </div>
+  <% end %>
+</div>
