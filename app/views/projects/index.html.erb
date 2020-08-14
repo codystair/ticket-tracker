@@ -1,0 +1,24 @@
+<h1>Projects</h1>
+
+<table>
+  <thead>
+    <th>Name</th>
+    <th>Open Tickets</th>
+    <th>Total Tickets</th>
+  </thead>
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+        <td>
+          <strong><%= link_to project.name, project_path(project) %></strong>
+          <br/>
+          <%= project.description %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br />
+
+<%= link_to 'New Project', new_project_path %>
