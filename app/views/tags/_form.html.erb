@@ -1,0 +1,12 @@
+<div>
+  <%= form_for @tag do |f|%>
+    <div>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    <div>
+    <div>
+      <%= f.submit(@tag.new_record? ? 'Create Tag' : 'Update Tag') %>
+      <%= link_to 'Back', tags_path %>
+    </div>
+  <% end %>
+</div>
