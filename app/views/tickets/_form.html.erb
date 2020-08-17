@@ -2,18 +2,22 @@
   <%= form_for @ticket do |f|%>
     <div>
       <%= f.label :project %>
+      <br/>
       <%= f.collection_select :project_id, Project.all, :id, :name, id: :ticket_project_id %>
     </div>
     <div>
       <%= f.label :name %>
+      <br/>
       <%= f.text_field :name %>
     <div>
     <div>
       <%= f.label :body %>
+      <br/>
       <%= f.text_area :body %>
     </div>
     <div>
       <%= f.label :tags %>
+      <br/>
       <%= f.collection_select :tag_ids, Tag.all, :id, :name, {}, multiple: true, id: :ticket_tag_ids, size: Tag.count %>
     </div>
     <div>
