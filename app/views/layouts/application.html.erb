@@ -11,6 +11,23 @@
 
   <body>
     <section class="container">
+      <ul class="nav justify-content-end">
+        <li class="nav-item"><%= link_to 'Log in', '', class: 'nav-link' %>
+      </ul>
+
+      <ul class="nav">
+        <li class="nav-item"><strong class="nav-link">Ticketing</strong></li>
+        <li class="nav-item">
+          <%= link_to "Projects", projects_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Tickets", tickets_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Tags", tags_path, class: 'nav-link' %>
+        </li>
+      </ul>
+
       <%= yield %>
     </section>
   </body>

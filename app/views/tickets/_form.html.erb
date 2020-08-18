@@ -1,28 +1,24 @@
 <div>
   <%= form_for @ticket do |f|%>
-    <div>
+    <div class="form-group">
       <%= f.label :project %>
-      <br/>
-      <%= f.collection_select :project_id, Project.all, :id, :name, id: :ticket_project_id %>
+      <%= f.collection_select :project_id, Project.all, :id, :name, id: :ticket_project_id, class: 'form-control' %>
     </div>
-    <div>
+    <div class="form-group">
       <%= f.label :name %>
-      <br/>
-      <%= f.text_field :name %>
+      <%= f.text_field :name, class: 'form-control' %>
     <div>
-    <div>
+    <div class="form-group">
       <%= f.label :body %>
-      <br/>
-      <%= f.text_area :body %>
+      <%= f.text_area :body, class: 'form-control' %>
     </div>
-    <div>
+    <div class="form-group">
       <%= f.label :tags %>
-      <br/>
-      <%= f.collection_select :tag_ids, Tag.all, :id, :name, {}, multiple: true, id: :ticket_tag_ids, size: Tag.count %>
+      <%= f.collection_select :tag_ids, Tag.all, :id, :name, {}, multiple: true, class: 'form-control', id: :ticket_tag_ids, size: Tag.count %>
     </div>
-    <div>
-      <%= f.submit(@ticket.new_record? ? 'Create Ticket' : 'Update Ticket') %>
-      <%= link_to 'Back', tickets_path %>
-    </div>
+
+    <%= f.submit @ticket.new_record? ? 'Create Ticket' : 'Update Ticket', class: 'btn btn-primary' %>
+    <br/>
+    <%= link_to 'Back', tickets_path %>
   <% end %>
 </div>
