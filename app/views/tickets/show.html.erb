@@ -4,6 +4,26 @@
   <strong>Tags: </strong>
   <%= @ticket.tags.map {|tag| tag.name }.join(', ')%>
 </p>
+<p>
+  <%= link_to 'Edit', edit_ticket_path(@ticket) %>
+</p>
+
+<table class='table'>
+  <thead>
+    <tr>
+      <th>Status</th>
+      <th>Creator</th>
+      <th>Assignee</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @ticket.status.titleize %></td>
+      <td><%= @ticket.creator.name %></td>
+      <td><%= @ticket.assignee ? @ticket.assignee.name : "-" %></td>
+    </tr>
+  </tbody>
+</table>
 
 <h2>Comments</h2>
 

@@ -13,4 +13,12 @@
 
 <h1>Tickets</h1>
 
-<%= render 'tickets/list', tickets: @project.tickets %>
+<% if @project.tickets.empty? %>
+  <p>No tickets exist for this project.</p>
+<% else %>
+  <%= render 'tickets/list', tickets: @project.tickets %>
+<% end %>
+
+<br/>
+
+<%= link_to 'New Ticket', new_ticket_path %>
