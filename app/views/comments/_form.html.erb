@@ -1,0 +1,15 @@
+<%= form_for [@ticket, comment] do |f| %>
+  <%= render 'shared/errors', obj: comment %>
+
+  <div class='form-group'>
+    <%= f.label :body, 'Add a comment' %>
+    <%= f.text_area :body, id: :comment_body, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :ticket_status, "Update ticket status" %>
+    <%= select_tag :ticket_status, options_for_select(Ticket::STATUSES.map{|t| [t.titleize, t]}, params[:ticket_status]), id: :ticket_status, include_blank: "Do not change", class: 'form-control' %>
+  </div>
+
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>
