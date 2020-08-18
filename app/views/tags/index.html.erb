@@ -1,31 +1,35 @@
 <h1>Tags</h1>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Tickets</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @tags.each do |tag| %>
+<% if @tags.empty? %>
+  <p>There are no tags!</p>
+<% else %>
+  <table class="table">
+    <thead>
       <tr>
-        <td>
-          <%= tag.name %>
-        </td>
-        <td>
-          <%= link_to tag.ticket_tags.count, tickets_path(tag: tag) %>
-        </td>
-        <td>
-          <%= link_to 'Edit', edit_tag_path(tag) %>
-          or
-          <%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %>
-        </td>
+        <th>Name</th>
+        <th>Tickets</th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @tags.each do |tag| %>
+        <tr>
+          <td>
+            <%= tag.name %>
+          </td>
+          <td>
+            <%= link_to tag.ticket_tags.count, tickets_path(tag: tag) %>
+          </td>
+          <td>
+            <%= link_to 'Edit', edit_tag_path(tag) %>
+            or
+            <%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
 
 <br />
 
