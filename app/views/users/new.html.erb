@@ -1,0 +1,37 @@
+<%= form_with(model: @user, local: true, url: signup_path) do |f| %>
+  <div>
+    <%= f.label :name %>
+    <br/>
+    <%= f.text_field :name, id: :user_name %>
+  </div>
+
+  <br/>
+
+  <div>
+    <%= f.label :emal %>
+    <br/>
+    <%= f.text_field :email, id: :user_email %>
+  </div>
+
+  <br/>
+
+  <div>
+    <%= f.label :password %>
+    <br/>
+    <%= f.password_field :password, id: :user_password %>
+  </div>
+
+  <br/>
+
+  <div>
+    <%= f.label :password_confirmation %>
+    <br/>
+    <%= f.password_field :password_confirmation, id: :user_password_confirmation %>
+  </div>
+
+  <br/>
+
+  <div>
+    <%= f.submit 'Create Account' %>
+  </div>
+<% end %>
