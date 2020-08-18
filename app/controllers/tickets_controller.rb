@@ -3,7 +3,19 @@ class TicketsController < ApplicationController
   before_action :require_session, except: [:show, :index]
   
   def index
-    @tickets = Ticket.all
+    @tickets = if params[:project].present?
+                 Project.find(params[:project]).tickets
+               else
+                 Ticket.all
+               end
+
+    if params[:status].present?
+      @tickets = @tickets.where(status: params[:status])
+    end
+
+    if params[:tag].present?
+      @tickets = @tickets.joins(:tags).where('tags.id': params[:tag])
+    end
   end
 
   def show
