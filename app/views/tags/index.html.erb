@@ -14,7 +14,9 @@
         <td>
           <%= tag.name %>
         </td>
-        <td></td>
+        <td>
+          <%= link_to tag.ticket_tags.count, tickets_path(tag: tag) %>
+        </td>
         <td>
           <%= link_to 'Edit', edit_tag_path(tag) %>
           or
