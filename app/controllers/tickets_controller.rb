@@ -7,7 +7,6 @@ class TicketsController < ApplicationController
   end
 
   def show
-    @ticket = Ticket.find(params[:id])
   end
 
   def new
@@ -15,10 +14,10 @@ class TicketsController < ApplicationController
   end
 
   def create
-    @ticket = Ticket.new(ticket_params)
+    @ticket = Ticket.new(ticket_params.merge(creator: current_user))
 
     if @ticket.save
-      redirect_to @ticket
+      redirect_to @ticket, notice: 'Ticket was successfully created.'
     else
       render :new
     end
@@ -29,8 +28,7 @@ class TicketsController < ApplicationController
 
   def update
     if @ticket.update(ticket_params)
-      flash[:notice] = 'Your ticket was updated.'
-      redirect_to @ticket
+      redirect_to @ticket, notice: 'Ticket was successfully updated.'
     else
       render :edit
     end

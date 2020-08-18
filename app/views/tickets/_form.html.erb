@@ -14,6 +14,14 @@
     <%= f.text_area :body, class: 'form-control' %>
   </div>
   <div class="form-group">
+    <%= f.label :status %>
+    <%= f.select :status, Ticket::STATUSES.map{|t| [t, t]}, id: :ticket_status, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :assignee, "Assigned To" %>
+    <%= f.collection_select :assignee_id, User.all, :id, :name, id: :ticket_assignee_id, include_blank: 'No one', class: 'form-control'%>
+  </div>
+  <div class="form-group">
     <%= f.label :tags %>
     <%= f.collection_select :tag_ids, Tag.all, :id, :name, {}, multiple: true, class: 'form-control', id: :ticket_tag_ids, size: Tag.count %>
   </div>
