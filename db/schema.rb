@@ -12,9 +12,12 @@
 
 ActiveRecord::Schema.define(version: 2020_08_18_175319) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "comments", force: :cascade do |t|
-    t.integer "creator_id", null: false
-    t.integer "ticket_id", null: false
+    t.bigint "creator_id", null: false
+    t.bigint "ticket_id", null: false
     t.string "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -49,8 +52,8 @@ ActiveRecord::Schema.define(version: 2020_08_18_175319) do
     t.integer "project_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "creator_id"
-    t.integer "assignee_id"
+    t.bigint "creator_id"
+    t.bigint "assignee_id"
     t.index ["assignee_id"], name: "index_tickets_on_assignee_id"
     t.index ["creator_id"], name: "index_tickets_on_creator_id"
   end
