@@ -11,6 +11,8 @@ test:
 
 production:
   adapter: postgresql
-  database: my_database_production
+  database: ticket-tracker_production
   pool: 5
   timeout: 5000
+  username: <%= ENV['ticket-tracker_DATABASE_USER'] %>
+  password: <%= ENV['ticket-tracker_DATABASE_PASSWORD'] %>
